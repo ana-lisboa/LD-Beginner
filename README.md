@@ -25,14 +25,14 @@ DB Structure:
 
 ## Features to implement
 
-- [] Callback Functions and Route::view()
+- [x] Callback Functions and Route::view()
 - [x] Routing to a Single Controller Method
-- [] Route Parameters
-- [] Route Naming
-- [] Route Groups
-- [] Blade Basics
+- [x] Route Parameters
+- [x] Route Naming
+- [x] Route Groups
+- [x] Blade Basics
 
-- [] Displaying Variables in Blade
+- [x] Displaying Variables in Blade
 - [] Blade If-Else and Loop Structures
 - [x] Blade Loops
 - [] Layout: @include, @extends, @section, @yield
@@ -50,7 +50,7 @@ DB Structure:
 - [] Eager Loading and N+1 Query Problem
 - [] Full Simple CRUD
 
-- [] Route Resource and Resourceful Controllers
+- [x] Route Resource and Resourceful Controllers
 - [] Forms, Validation and Form Requests
 - [] File Uploads and Storage Folder Basics
 - [] Table Pagination

@@ -2,8 +2,15 @@
 
 @forelse($articles as $article)
     <article>
+
+        @if($article->image)
+            <a href="{{ route('articles.detail', $article->id) }}">
+                <img src="{{ $article->image }}" alt="{{$article->title}} image">
+            </a>
+        @endif
+
         <h2>
-            <a href="{{ route('articles.show', $article->id) }}">
+            <a href="{{ route('articles.detail', $article->id) }}">
                 {{ $article->title }}
             </a>
         </h2>
