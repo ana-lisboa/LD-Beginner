@@ -10,11 +10,11 @@ Homepage: List of articles
 
 - [x] Article page
 - [x] Some static text page like "About me"
-- [] Also, there should be a Login mechanism (but no Register) for the author to write articles:
+- [x] Also, there should be a Login mechanism (but no Register) for the author to write articles:
 
 - [] Manage (meaning, create/update/delete) categories
 - [] Manage tags
-- [] Manage articles
+- [x] Manage articles
 - [x] For Auth Starter Kit, use Laravel Breeze (Tailwind) or Laravel UI (Bootstrap) - that starter kit will have some
   design, which is enough: the design is irrelevant for accomplishing the task
 
@@ -33,24 +33,24 @@ DB Structure:
 - [x] Blade Basics
 
 - [x] Displaying Variables in Blade
-- [] Blade If-Else and Loop Structures
+- [x] Blade If-Else and Loop Structures
 - [x] Blade Loops
 - [] Layout: @include, @extends, @section, @yield
-- [] Blade Components
-- [] Auth Basics
+- [x] Blade Components
+- [x] Auth Basics
 
-- [] Default Auth Model and Access its Fields from Anywhere
-- [] Check Auth in Controller / Blade
-- [] Auth Middleware
-- [] Database Basics
+- [x] Default Auth Model and Access its Fields from Anywhere
+- [x] Check Auth in Controller / Blade
+- [x] Auth Middleware
+- [x] Database Basics
 
 - [x] Database Migrations
 - [x] Basic Eloquent Model and MVC: Controller -> Model -> View
 - [] Eloquent Relationships: belongsTo / hasMany / belongsToMany
 - [] Eager Loading and N+1 Query Problem
-- [] Full Simple CRUD
+- [x] Full Simple CRUD
 
 - [x] Route Resource and Resourceful Controllers
-- [] Forms, Validation and Form Requests
-- [] File Uploads and Storage Folder Basics
-- [] Table Pagination
+- [x] Forms, Validation and Form Requests
+- [x] File Uploads and Storage Folder Basics
+- [x] Table Pagination
