@@ -1,16 +1,13 @@
-<h1>articles list</h1>
+<x-guest-layout>
+    <h1 class="text-2xl font-extrabold mb-20">articles list</h1>
 
-@forelse($articles as $article)
-    <article>
-        <h2>
-            <a href="{{ route('articles.show', $article->id) }}">
-                {{ $article->title }}
-            </a>
-        </h2>
-        <div class="body">
-            {{ $article->body }}
-        </div>
-    </article>
-@empty
-    <p>No articles found.</p>
-@endforelse
+    @forelse($articles as $article)
+        <x-article-view :article="$article"/>
+
+        @if($loop->last)
+            {{ $articles->links() }}
+        @endif
+    @empty
+        <p>No articles found.</p>
+    @endforelse
+</x-guest-layout>
