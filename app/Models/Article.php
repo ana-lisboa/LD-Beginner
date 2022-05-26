@@ -10,4 +10,9 @@ class Article extends Model
     use HasFactory;
 
     protected array $fillable = ['title', 'full_text', 'image'];
+
+    public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

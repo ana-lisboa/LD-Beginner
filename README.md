@@ -13,7 +13,7 @@ Homepage: List of articles
 - [x] Also, there should be a Login mechanism (but no Register) for the author to write articles:
 
 - [] Manage (meaning, create/update/delete) categories
-- [] Manage tags
+- [x] Manage tags
 - [x] Manage articles
 - [x] For Auth Starter Kit, use Laravel Breeze (Tailwind) or Laravel UI (Bootstrap) - that starter kit will have some
   design, which is enough: the design is irrelevant for accomplishing the task
@@ -54,3 +54,5 @@ DB Structure:
 - [x] Forms, Validation and Form Requests
 - [x] File Uploads and Storage Folder Basics
 - [x] Table Pagination
+
+added separate back and front controllers separate back and front components and views

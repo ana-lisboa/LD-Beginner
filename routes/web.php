@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::redirect('/', 'admin/articles/');
 
     Route::resource('articles', ArticleController::class);
+
+    Route::resource('tags', TagController::class);
 });
 
 require __DIR__ . '/auth.php';

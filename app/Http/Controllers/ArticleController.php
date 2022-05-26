@@ -5,40 +5,53 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreOrUpdateArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\Tag;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
-    public function list(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function list(): Factory|View|Application
     {
-        return view('articles.index', ['articles' => Article::paginate(5)]);
+        return view('front.articles.index', [
+            'articles' => Article::with('tags')
+                ->orderByDesc('created_at')
+                ->paginate(5)
+        ]);
     }
 
-    public function detail(Article $article): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function detail(Article $article): Factory|View|Application
     {
         return view('articles.show', ['article' => $article]);
     }
 
 
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index(): View|Factory|Application
     {
         return view('admin.articles.index', ['articles' => Article::paginate(10)]);
     }
 
-    public function create(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function create(): Factory|View|Application
     {
-        return view('admin.articles.createOrUpdate');
+        return view('admin.articles.createOrUpdate', ['tags' => Tag::all()->pluck('name', 'id')]);
     }
 
 
-    public function store(StoreOrUpdateArticleRequest $request): \Illuminate\Http\RedirectResponse
+    public function store(StoreOrUpdateArticleRequest $request): RedirectResponse
     {
         $article = Article::create($request->only(['title', 'full_text']));
 
         if ($request->hasFile('image')) {
             $this->saveImage($request->file('image'), $article);
         }
+
+        //attach tags
+        $article->tags()->attach($request->input('tags'));
 
         session()->flash('success', 'Article created successfully');
         return redirect()->route('articles.show', ['article' => $article->id]);
@@ -50,31 +63,40 @@ class ArticleController extends Controller
     }
 
 
-    public function edit($id): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function edit($id): Factory|View|Application
     {
-        return view('admin.articles.createOrUpdate', ['article' => Article::findOrFail($id)]);
+        $article = Article::with('tags')->findOrFail($id);
+
+        return view('admin.articles.createOrUpdate', [
+            'article' => $article,
+            'tags' => Tag::all()->pluck('name', 'id'),
+            'articleTagsIds' => $article->tags->pluck('id')
+        ]);
     }
 
-    public function update(StoreOrUpdateArticleRequest $request, Article $article): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
+    public function update(StoreOrUpdateArticleRequest $request, Article $article): RedirectResponse
     {
-
         $article->update($request->only(['title', 'full_text']));
 
         $this->updateImage($article, $request->file('image'));
 
+        $article->tags()->sync($request->input('tags'));
+
         session()->flash('success', 'Article created successfully');
-        return view('admin.articles.createOrUpdate', ['article' => $article]);
+
+        return redirect()->route('articles.edit', ['article' => $article->id]);
     }
 
     public function destroy(Article $article)
     {
         Storage::delete($article->image);
         $article->delete();
+
         session()->flash('success', 'Article deleted successfully');
-        return redirect()->route('articles.index');
+        return redirect()->route('admin.articles.index');
     }
 
-    private function saveImage(array|\Illuminate\Http\UploadedFile|null $file, $article)
+    private function saveImage(array|UploadedFile|null $file, $article)
     {
         $fileName = Str::random(20) . '.' . Str::slug($article->title) . '.' . $file->getClientOriginalExtension();
 
@@ -82,7 +104,7 @@ class ArticleController extends Controller
         $article->update(['image' => $fileName]);
     }
 
-    private function updateImage(Article $article, array|\Illuminate\Http\UploadedFile|null $file)
+    private function updateImage(Article $article, array|UploadedFile|null $file)
     {
         if ($file) {
 
