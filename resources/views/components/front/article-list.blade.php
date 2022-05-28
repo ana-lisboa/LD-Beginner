@@ -1,8 +1,7 @@
 <article class="flex flex-row mb-20 hover:shadow-md">
     @if($article->image)
         <a href="{{ route('articles.detail', $article->id) }}">
-            <img src="{{ Storage::has($article->image) ? Storage::url($article->image) : $article->image }}"
-                 alt="{{$article->title}} image" class="w-48 mr-5">
+            <x-front.article-image :article="$article"/>
         </a>
     @endif
 
@@ -16,9 +15,10 @@
             {{ $article->full_text }}
         </div>
 
-        @foreach($article->tags as $tag)
-            <x-front.tag-list :tag="$tag"/>
-        @endforeach
+        <x-front.article-category :article="$article"/>
+
+        <x-front.tag-list :article="$article"/>
+
     </div>
 
 </article>
