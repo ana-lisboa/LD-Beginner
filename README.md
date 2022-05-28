@@ -46,8 +46,8 @@ DB Structure:
 
 - [x] Database Migrations
 - [x] Basic Eloquent Model and MVC: Controller -> Model -> View
-- [] Eloquent Relationships: belongsTo / hasMany / belongsToMany
-- [] Eager Loading and N+1 Query Problem
+- [x] Eloquent Relationships: belongsTo / hasMany / belongsToMany
+- [x] Eager Loading and N+1 Query Problem
 - [x] Full Simple CRUD
 
 - [x] Route Resource and Resourceful Controllers
