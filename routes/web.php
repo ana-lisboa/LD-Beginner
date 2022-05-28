@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\Front\ArticleController as FrontController;
+use App\Http\Controllers\Admin\ArticleController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ArticleController::class, 'list'])->name('articles.list');
+Route::get('/', [FrontController::class, 'index'])->name('articles.list');
 
 Route::get('/about', function () {
     return view('about');
@@ -30,11 +32,13 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('articles', ArticleController::class);
 
     Route::resource('tags', TagController::class);
+
+    Route::resource('categories', CategoryController::class);
 });
 
 require __DIR__ . '/auth.php';
 
-Route::get('/{article:id}', [ArticleController::class, 'detail'])->name('articles.detail')->scopeBindings();
+Route::get('/{article:id}', [FrontController::class, 'show'])->name('articles.detail')->scopeBindings();
 
 Route::fallback(function () {
     return response()->json(['message' => 'Not Found!'], 404);

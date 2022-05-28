@@ -3151,9 +3151,9 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
                         }
                     }
 
-    if (utils.isFormData(requestData)) {
-      delete requestHeaders['Content-Type']; // Let the browser set it
-    }
+                    if (utils.isFormData(requestData)) {
+                        delete requestHeaders['Content-Type']; // Let the browser set it
+                    }
 
     var request = new XMLHttpRequest();
 
@@ -5311,15 +5311,16 @@ module.exports = {
             /***/
         }),
 
-/***/ "./node_modules/lodash/lodash.js":
-/*!***************************************!*\
+        /***/ "./node_modules/lodash/lodash.js":
+        /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
   \***************************************/
-/***/ (function(module, exports, __webpack_require__) {
+        /***/ (function (module, exports, __webpack_require__) {
 
-/* module decorator */ module = __webpack_require__.nmd(module);
-var __WEBPACK_AMD_DEFINE_RESULT__;/**
- * @license
+            /* module decorator */
+            module = __webpack_require__.nmd(module);
+            var __WEBPACK_AMD_DEFINE_RESULT__;/**
+             * @license
  * Lodash <https://lodash.com/>
  * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
@@ -22696,14 +22697,15 @@ function Item(fun, array) {
 Item.prototype.run = function () {
     this.fun.apply(null, this.array);
 };
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
+            process.title = 'browser';
+            process.browser = true;
+            process.env = {};
+            process.argv = [];
+            process.version = ''; // empty string to avoid regexp issues
+            process.versions = {};
 
-function noop() {}
+            function noop() {
+            }
 
             process.on = noop;
             process.addListener = noop;

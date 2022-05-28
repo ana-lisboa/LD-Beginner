@@ -12,7 +12,7 @@ Homepage: List of articles
 - [x] Some static text page like "About me"
 - [x] Also, there should be a Login mechanism (but no Register) for the author to write articles:
 
-- [] Manage (meaning, create/update/delete) categories
+- [x] Manage (meaning, create/update/delete) categories
 - [x] Manage tags
 - [x] Manage articles
 - [x] For Auth Starter Kit, use Laravel Breeze (Tailwind) or Laravel UI (Bootstrap) - that starter kit will have some
@@ -21,7 +21,7 @@ Homepage: List of articles
 DB Structure:
 
 - [x] Article has title (required), full text (required) and image to upload (optional)
-- [] Article may have only one category, but may have multiple tags
+- [x] Article may have only one category, but may have multiple tags
 
 ## Features to implement
 
@@ -55,4 +55,21 @@ DB Structure:
 - [x] File Uploads and Storage Folder Basics
 - [x] Table Pagination
 
-added separate back and front controllers separate back and front components and views
+added
+
+- [x] separate back and front controllers
+- [x] separate back and front components and views
+- [x] update readme with installation instructions
+
+## To install this project
+
+- pull the project
+- create a database
+- set .env settings
+- install dependencies
+- run migrations and seeds
+- create a user in the database
+- reset the user password
+- enter / url for front
+- enter /admin url for back
+- have fun!

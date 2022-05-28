@@ -14,7 +14,7 @@
 
         <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')"/>
+                <x-admin.label for="name" :value="__('Name')"/>
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
                          autofocus/>
@@ -22,14 +22,14 @@
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')"/>
+                <x-admin.label for="email" :value="__('Email')"/>
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required/>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')"/>
+                <x-admin.label for="password" :value="__('Password')"/>
 
                 <x-input id="password" class="block mt-1 w-full"
                          type="password"
@@ -39,7 +39,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')"/>
+                <x-admin.label for="password_confirmation" :value="__('Confirm Password')"/>
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                          type="password"
@@ -51,9 +51,9 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <x-admin.button class="ml-4">
                     {{ __('Register') }}
-                </x-button>
+                </x-admin.button>
             </div>
         </form>
     </x-auth-card>

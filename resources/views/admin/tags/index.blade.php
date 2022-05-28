@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Tags list
         </h2>
-        <x-link href="{{ route('tags.create') }}" type="link">Add new tag</x-link>
+        <x-admin.link href="{{ route('tags.create') }}" type="link">Add new tag</x-admin.link>
     </x-slot>
 
     <div class="py-12">
